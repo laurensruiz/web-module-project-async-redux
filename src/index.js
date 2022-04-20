@@ -1,7 +1,8 @@
 import React from 'react';
 import ReactDOM from 'react-dom';
-import { createStore } from 'redux';
+import { createStore, applyMiddleware } from 'redux';
 import { Provider } from 'react-redux';
+import thunk from 'redux-thunk';
 
 import reducer from "./state/reducer";
 
@@ -14,7 +15,7 @@ import './index.css';
 // okay reducer passes a certain state and action type, when we create a an action we return a type; action types can be used for a lot of reducers depending on where we add that specific action type then  will run the cases based on that action type on that reducers state(all of them will run i believe). now each state is updated and wherever we call that function for that specific state that data will appear(look at web guided day 3 todo vs form)
 
 //reducers probably only update the states for every action type case we write in and our function or action creators tell the reducer the type of action (for the cases) and what data we are passing (whether it is the payload or api)
-const store = createStore(reducer);
+const store = createStore(reducer, applyMiddleware(thunk));
 
 ReactDOM.render(
   <Provider store ={store}> 
