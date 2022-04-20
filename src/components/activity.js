@@ -1,15 +1,22 @@
 import React from "react"
 import { connect } from "react-redux"
+import { fetchDataApi } from '../state/action-creators'
+
+const Activity = (props) => {
+const {activity, type, fetchDataApi } = props
 
 
-const Joke = (props) => {
-const {activity, type } = props
-console.log(props)
+const handleActivityClick =() => {
+  fetchDataApi();
+}
     return (
+      
       <div className="Activity">
+        <h2>Feeling Bored?</h2>
         {activity && <p>Activity: {activity}</p>}
-        
+
         {type && <p>Type: {type} </p>}
+        <button onClick={handleActivityClick}>Press for Fun</button>
       </div>
       
     )
@@ -23,4 +30,4 @@ console.log(props)
     })
   }
 
-  export default connect(mapStatetoProps)(Joke)
+  export default connect(mapStatetoProps, {fetchDataApi})(Activity)

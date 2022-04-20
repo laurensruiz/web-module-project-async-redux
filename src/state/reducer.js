@@ -1,9 +1,10 @@
-import { GET_RANDOM_ACTIVITY } from "./action-types";
+import { GET_RANDOM_ACTIVITY, GET_DOG } from "./action-types";
 
 
 const initialState = {
   activity: '',
   type: '',
+  dog: '',
 }
 
 const reducer =(state = initialState, action) =>{
@@ -13,6 +14,11 @@ const reducer =(state = initialState, action) =>{
         ...state,
         activity: action.payload.activity,
         type: action.payload.type,
+      }
+      case GET_DOG:
+      return {
+        ...state,
+        dog: action.payload.message,
       }
     default:
       return (state)
